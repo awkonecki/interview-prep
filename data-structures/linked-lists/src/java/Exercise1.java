@@ -5,6 +5,7 @@ public class Exercise1 {
         public static class LinkedListNode {
             private int data;
             private LinkedListNode next = null;
+            private LinkedListNode prev = null;
     
             public LinkedListNode(int value) {
                 this.data = value;
@@ -45,8 +46,72 @@ public class Exercise1 {
             }
         }
     
-        public int remove() {
-            return 0;
+        public int removeHead() {
+            // empty
+            // non-empty
+
+            if (this.mHead == null) {
+                // no work
+                throw new java.lang.IllegalStateException("");
+            }
+            
+            // do work there is a head.
+            LinkedListNode nodeToRemove = this.mHead;
+            LinkedListNode newHead = nodeToRemove.next;
+
+            // set the current head to null
+            nodeToRemove.next = null;
+
+            // Update head to the new head for the linked list.
+            this.mHead = newHead;
+
+            // tail could still be pointing to head when the array size is 1 for head removal.
+            if (this.mHead == null) {
+                // update tail
+                this.mTail = null;
+            }
+
+            return nodeToRemove.data;
+        }
+
+        public int removeTail() {
+            // empty
+            // non-empty
+
+            if (this.mTail == null) {
+                // no work
+                throw new java.lang.IllegalStateException("");
+            }
+            
+            // do work there is a head.
+            LinkedListNode nodeToRemove = this.mTail;
+            LinkedListNode newTail = this.mHead;
+
+            // get new tail first
+            while (newTail != nodeToRemove && newTail.next != nodeToRemove) {
+                // traversal
+                newTail = newTail.next;                
+            }
+
+            // newTail can be equal to nodeToRemove or the next of newTail is nodeToRemove
+            if (newTail == nodeToRemove) {
+                // linked lsit of size one
+                newTail = null;
+                this.mHead = null;
+                this.mTail = null;
+            }
+            else if (newTail.next == nodeToRemove) {
+                // newTail is set to the right value
+                newTail.next = null;
+            }
+            else {
+                throw new java.lang.IllegalStateException("");
+            }
+
+            // Update head to the new head for the linked list.
+            this.mTail = newTail;
+
+            return nodeToRemove.data;
         }
     
         public int size() {
@@ -131,14 +196,17 @@ public class Exercise1 {
         myList.insertAtBack(5);
         myList.insertAtBack(2);
 
-        for (int i = 0; i < 10; i++) {
-            myList.insertAtBack(i);
-        }
+        //for (int i = 0; i < 10; i++) {
+        //    myList.insertAtBack(i);
+        //}
 
         iterationSerial(myList);
         iterationRecursive(myList);
         twoPoinerTraversal(myList);
 
+        myList.removeTail();
+        myList.removeTail();
+        myList.insertAtBack(3);
 
         return;
     }
