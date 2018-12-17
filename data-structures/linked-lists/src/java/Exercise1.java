@@ -77,6 +77,8 @@ public class Exercise1 {
             currentNode = currentNode.getNext();
         }
 
+        System.out.println("");
+
         // We have reached the end of the linked list.
     }
 
@@ -96,6 +98,31 @@ public class Exercise1 {
 
         System.out.println("At Node " + currentNode.getData() + " recursive.");
         recursive(currentNode.getNext());
+        System.out.println("");
+
+    }
+
+    // two pointers one slow and one fast
+    public static void twoPoinerTraversal(LinkedList head) {
+        // error check
+
+        LinkedList.LinkedListNode slow, fast;
+        // slow will move by one
+        // fast will move by two
+        slow = head.getHead();
+        fast = head.getHead();
+
+        while (fast != null && fast.getNext() != null) {
+            System.out.println("Fast Node " + fast.getData());
+            System.out.println("Slow Node " + slow.getData());
+            
+            // do our work
+            fast = fast.getNext().getNext();
+            slow = slow.getNext();
+        }
+
+        System.out.println("");
+        recursive(slow);
     }
 
     public static void main(String [] args) {
@@ -110,6 +137,8 @@ public class Exercise1 {
 
         iterationSerial(myList);
         iterationRecursive(myList);
+        twoPoinerTraversal(myList);
+
 
         return;
     }
