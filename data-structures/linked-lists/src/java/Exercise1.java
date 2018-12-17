@@ -69,15 +69,33 @@ public class Exercise1 {
             throw new java.lang.IllegalArgumentException("");
         }
 
-        LinkedList.LinkedListNode current = head.getHead();
+        LinkedList.LinkedListNode currentNode = head.getHead();
 
-        while (current != null) {
-            System.out.println("At Node " + current.getData());
+        while (currentNode != null) {
+            System.out.println("At Node " + currentNode.getData());
             // update the reference for current
-            current = current.getNext();
+            currentNode = currentNode.getNext();
         }
 
         // We have reached the end of the linked list.
+    }
+
+    // recursive iteration
+    public static void iterationRecursive(LinkedList head) {
+        if (head == null) {
+            throw new java.lang.IllegalArgumentException("");
+        }
+
+        recursive(head.getHead());
+    }
+
+    private static void recursive(LinkedList.LinkedListNode currentNode) {
+        if (currentNode == null) {
+            return;
+        }
+
+        System.out.println("At Node " + currentNode.getData() + " recursive.");
+        recursive(currentNode.getNext());
     }
 
     public static void main(String [] args) {
@@ -86,11 +104,12 @@ public class Exercise1 {
         myList.insertAtBack(5);
         myList.insertAtBack(2);
 
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 10; i++) {
             myList.insertAtBack(i);
         }
 
         iterationSerial(myList);
+        iterationRecursive(myList);
 
         return;
     }
