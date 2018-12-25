@@ -18,6 +18,10 @@ public class Exercise1 {
             public LinkedListNode getNext() {
                 return this.next;
             }
+
+            public void setNext(LinkedListNode nextNode) {
+                this.next = nextNode;
+            } 
         }
     
         private LinkedListNode mHead = null, mTail = null;
@@ -125,6 +129,14 @@ public class Exercise1 {
         public LinkedListNode getTail() {
             return this.mTail;
         }
+
+        public void setTail(LinkedListNode newTail) {
+            this.mTail = newTail;
+        }
+
+        public  void setHead(LinkedListNode newHead) {
+            this.mHead = newHead;
+        }
     }
 
     // iteration through linked list.
@@ -190,6 +202,44 @@ public class Exercise1 {
         recursive(slow);
     }
 
+    // swap contents of even index within the list to the odd and vice versa.
+    public static void evenOddSwap(LinkedList myLinkedList) {
+        // error check
+
+        LinkedList.LinkedListNode oddNode = null, evenNode = myLinkedList.getHead();
+        LinkedList.LinkedListNode prev = null;
+
+        while (evenNode != null && evenNode.getNext() != null) {
+            // declare what we have
+            oddNode = evenNode.getNext();
+            LinkedList.LinkedListNode oddNodeNext; //, evenNodeNext;
+
+            oddNodeNext = oddNode.getNext();
+            // evenNodeNext = evenNode.getNext();
+
+            // check for head
+            if (prev == null) {
+                myLinkedList.setHead(oddNode);
+            }
+
+            // perform swap
+            oddNode.setNext(evenNode);
+            evenNode.setNext(oddNodeNext);
+            
+            // update the even & odd node
+            prev = evenNode;
+            evenNode = oddNodeNext;
+            oddNode = null;
+        }
+
+        if (evenNode == null) {
+            myLinkedList.setTail(prev);
+        }
+        else {
+            myLinkedList.setTail(evenNode);
+        }
+    }
+
     public static void main(String [] args) {
         LinkedList myList = new LinkedList();
 
@@ -201,8 +251,9 @@ public class Exercise1 {
         //}
 
         iterationSerial(myList);
+        evenOddSwap(myList);
         iterationRecursive(myList);
-        twoPoinerTraversal(myList);
+        // twoPoinerTraversal(myList);
 
         myList.removeTail();
         myList.removeTail();
