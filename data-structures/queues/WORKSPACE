@@ -1,0 +1,4 @@
+local_repository(
+    name = "interview_prep_array_lib",
+    path = "/nebo-ws/interview-prep/data-structures/arrays",
+)
