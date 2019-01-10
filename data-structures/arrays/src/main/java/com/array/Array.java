@@ -1,3 +1,5 @@
+package arrays.src.main.java.com.array;
+
 import java.lang.Object;
 import java.util.Iterator;
 
