@@ -21,7 +21,9 @@ RUN echo "oracle-java8-installer shared/accepted-oracle-license-v1-1 select true
 RUN apt-get update -y && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     curl \
     git \
+    gradle \
     g++ \
+    maven \
     oracle-java8-installer \
     pkg-config \
     python \
