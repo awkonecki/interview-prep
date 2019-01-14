@@ -5,7 +5,6 @@ class IterationTraversal:
             return True
 
     def findMax(self, values):
-        self.values = values
         if not (self.inputValidation(values)):
             maxInArray = values[0]
             # language specific iteration
