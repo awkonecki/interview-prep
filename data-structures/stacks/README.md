@@ -7,16 +7,13 @@ A Stack is a container that follows a last in first out paradiagm.  It is a comm
 
 ### Full Stack
 ```
-Top         Current Scope
+Top         Element N
             -------------
-            Current Scope - 1
+            Element N - 1
             -------------
-            Current Scope - 2
-            -------------
-            Current Scope - 3
             .....
             -------------
-Bot         Current Scope - N - 1 
+Bot         Element 0 
 Height = N  -------------
 ```
 
@@ -28,15 +25,15 @@ Height = 0
 
 ### Single Element Stack
 ```
-Top / Bot   Scope 0     
+Top / Bot   Element 0     
 Height = 1  ---------------
 ```
 
 ### Two Element Stack
 ```
-Top         Scope 1
+Top         Element 1
             ----------------
-Bot         Scope 0
+Bot         Element 0
 Height = 2  ----------------
 ```
 
@@ -93,7 +90,7 @@ Output:
 6
 ```
 
-2. Given an array of integers  that represents heights of land; determine the maximum volume of water that can be landlocked.
+1. Given an array of integers  that represents heights of land; determine the maximum volume of water that can be landlocked.
 ```
 Input:
 [1, 2, 3, 4, 1, 2]
@@ -113,4 +110,19 @@ Output:
 
 Reasoning:
 Volume of 1 water can be held between the land heights at index 3 and 5.
+```
+
+1. Given a stream of integers, determine the min at each number that has been inserted.
+```
+Input:
+[1,2,3,4,5]
+[7,4,2,4,1,5,9]
+```
+
+```
+Output:
+Value inserted
+[7,4,5,9]
+Min Seen for the inserted
+[7,4,4,4]
 ```
